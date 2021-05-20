@@ -1,0 +1,59 @@
+<style>
+
+.input{
+    width: 50%;
+    display: inline-block;
+}
+
+.links{
+    margin-top: 20px;
+}
+
+a{
+    margin-right: 10px;
+}
+
+.box{
+    width: 300px;
+    display: block;
+    margin: auto;
+    color:red;
+}
+.submit{
+margin-top:20px;
+
+}
+
+</style>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+             <div class="box" >
+                <p class="message">{{message}}</p>
+                 </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<div class= "main">
+    <div>
+        <h1> Edit {{pie['name']}}</h1>
+        <form action="/update/{{pie['id']}}" method="POST">
+                <div class="input">
+                            <p>Name:</p>
+                            <textarea type="text" name="name" rows="2" cols="20" >{{pie['name']}}</textarea> 
+                            <p>Filling:</p> 
+                            <textarea type="text" name="filling" rows="2" cols="20" > {{pie['filling']}}</textarea>        
+                            <p>Crust:</p> 
+                            <textarea type="text" name="crust" rows="2" cols="20" > {{pie['crust']}}</textarea>      
+                </div>
+                <div class='submit'>
+                <input type="submit" value="Edit Pie" >
+                <div>
+                
+            </form>
+    </div>
+    <div class="links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">LogOut</a>
+    </div>
+</div>

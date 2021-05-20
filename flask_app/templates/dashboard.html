@@ -1,0 +1,99 @@
+ <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.main{
+    display: flex;
+    justify-content: space-between;
+
+}
+.box2{
+    margin-top: 20px;
+    margin-right: 10px;
+}
+a{
+    margin-right: 10px;
+}
+form{
+    display: inline-block;
+}
+
+
+.submit{
+    margin-top: 20px;
+}
+
+.box{
+    width: 300px;
+    display: block;
+    margin: auto;
+    color:red;
+}
+</style>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+             <div class="box" >
+                <p class="message">{{message}}</p>
+                 </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
+<div class="main">
+    <div class="box1">
+        <h1>PyPies by {{user['first_name']}}</h1>
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for pie in pies: %}
+        <tr>
+        <td>{{pie['name']}}</td>
+        <td>
+        <a href="/edit/{{pie['id']}}">| Edit</a> <a href="/delete/{{pie['id']}}">| Delete</a>
+        </td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <h1> Add new Pie</h1>
+        <form action="/create" method="POST">
+                <div class="input">
+                    <p>Name:</p> 
+                    <input type="text" name="name" >
+                    <p>Filling:</p> 
+                    <input type="text" name="filling" >
+                    <p>Crust:</p> 
+                    <input type="text" name="crust">
+                    <input type="hidden" name="vote" value=0/>
+                </div>
+                <div class='submit'>
+                    <input type="submit" value="Add Pie" >
+                </div>
+            </form>
+        </div>
+
+
+    <div class="box2">
+        <a href="/pies">Pie Derby</a>
+        <a href="/logout">LogOut</a>
+    </div>
+</div>

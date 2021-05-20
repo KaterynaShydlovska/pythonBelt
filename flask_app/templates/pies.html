@@ -1,0 +1,51 @@
+
+ <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.main{
+    display: flex;
+    justify-content: space-between;
+}
+
+a{
+    margin-right: 10px;
+}
+</style>
+<div class=" main"> 
+    <div class="box1">
+        <h1>PyPie Derby</h1>
+        <table>
+        <tr>
+            <th>Name</th>
+            <th>PyPie</th>
+            <th>Votes</th>
+        </tr>
+        {% for pie in pies: %}
+        <tr>
+        <td><a href="/showPie/{{pie['id']}}">{{pie['name']}}</a></td>
+        <td>{{pie['first_name']}}</td>
+        <td>{{pie['vote']}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">LogOut</a>
+    </div>
+
+</div>

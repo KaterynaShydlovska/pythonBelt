@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PyPie Derby</title>
+<style>
+.main{
+    width: 500px;
+    display: block;
+    margin: auto;
+    border: 1px solid black;
+    text-align: center;
+    margin-top: 20px;
+}
+.context{
+    display: flex;
+}
+a{
+    margin-right: 20px;
+}
+input{
+    margin-bottom: 10px;
+}
+</style>
+
+</head>
+    <dody>
+        <div class="context">
+            <div class="main">
+                <h1> {{pie['name']}} By {{pie['first_name']}} </h1>
+                <p>{{pie['filling']}}</p>
+                <p>Cast a Vote:</p>
+                <form action="/updateVotes/{{pie['id']}}" method="POST">
+                <input type="submit" value="Delicious">
+                </form>
+            </div>
+
+            <div>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">LogOut</a>
+            </div>
+        </div>
+    </body>
+</html>

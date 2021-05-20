@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PyPie Derby</title>
+<style>
+.message {
+    color: red;
+    text-align: center;
+    
+}
+
+.submit{
+    margin-top: 20px;
+    margin-left: 100px;
+    background-color: green;
+    color: white;
+}
+.main{
+    display: flex;
+    justify-content: space-around;
+}
+h1{
+    margin-left: 270px;
+}
+</style>
+
+</head>
+<body>
+   
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+             <div class="box" >
+                <p class="message">{{message}}</p>
+                 </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>Login and registration</h1>
+   <div class="main">
+    <div class='box'>
+    <h2>Register here</h2>
+    <form action="/addUser" method="POST">
+        <div class="input">
+        <p>First Name:</p> 
+        <input type="text" name="first_name" required>
+        <p>Last Name:</p> 
+        <input type="text" name="last_name" required>
+        <p>Email:</p> 
+        <input type="text" name="email" required>
+        <p>Password:</p> 
+        <input type="text" name="password" required>
+        <p>Confirm password:</p> 
+        <input type="text" name="conf_password" required>
+        </div>
+        <input type="submit" value="SignUp" class='submit'>
+    </form>
+    </div>
+        <div class='box2'>
+        <h2>Login here</h2>
+    <form action="/login" method="POST">
+        <div class="input">
+        <p>Email:</p> 
+        <input type="text" name="email" required>
+        <p>Password:</p> 
+        <input type="text" name="password" required>
+        
+        </div>
+        <input type="submit" value="Login" class='submit'>
+    </form>
+    </div>
+    </div>
+</body>
+</html>
